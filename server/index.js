@@ -8,7 +8,7 @@ import multer from "multer";
 import helmet from "helmet";
 import path from "path";
 import { fileURLToPath } from "url";
-import {register} from './controllers/auth.js'
+import { register } from "./controllers/auth.js";
 
 // CONFIGURATIONS!
 
@@ -43,17 +43,20 @@ const storage = multer.diskStorage({
     cb(null, file.originalname);
   },
 });
-const upload = multer({storage})
+const upload = multer({ storage });
 
 // ROUTES WITH FILES
-app.post('/auth/register', upload.single("picture"), register)
+app.post("/auth/register", upload.single("picture"), register);
 
-// MONGOOSE 
+// MONGOOSE
 
-const PORT = process.env.PORT || 3000
-mongoose.connect(process.env.MONGO_URL, {
-    useNewUrlParser : true,
-    useUnifiedTopology : true,
-}).then(() => {
-    app.listen(PORT, () => console.log(`Server port : ${PORT}`))
-}).catch((error) => console.log(`${error} did not connect`))
+const PORT = process.env.PORT || 3000;
+mongoose
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    app.listen(PORT, () => console.log(`Server port : ${PORT}`));
+  })
+  .catch((error) => console.log(`${error} did not connect`));
