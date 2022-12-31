@@ -1,4 +1,5 @@
 import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
+import Form from './Form'
 
 const LoginPage = () => {
   const theme = useTheme();
@@ -25,7 +26,7 @@ const LoginPage = () => {
       <Typography fontWeight="500" variant="h5" sx={{mb :"1.5rem"}}>
         Welcome to Socialize, The Social Media for everyone!
       </Typography>
-
+      <Form></Form>
       </Box>
     </Box>
   );
