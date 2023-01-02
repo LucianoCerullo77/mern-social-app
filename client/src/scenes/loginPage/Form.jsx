@@ -7,7 +7,7 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import { EditOutlinedIcon } from "@mui/icons-material/EditOutlined";
+import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import { Formik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
@@ -50,8 +50,8 @@ const Form = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isNonMobile = useMediaQuery("(min-width:600px)");
-  const isLogin = pageType == "login";
-  const isRegister = pageType == "register";
+  const isLogin = pageType === "login";
+  const isRegister = pageType === "register";
 
   const handleFormSubmit = async (values, onSubmitProps) => {};
   return (
@@ -91,7 +91,7 @@ const Form = () => {
                     Boolean(touched.firstName) && Boolean(errors.firstName)
                   }
                   helperText={touched.firstName && errors.firstName}
-                  sx={{ gridColumn: "span 2" }}
+                  sx={{ gridColumn: "span 4" }}
                 />
                 <TextField
                   label="Last Name"
@@ -101,7 +101,7 @@ const Form = () => {
                   name="firstName"
                   error={Boolean(touched.lastName) && Boolean(errors.lastName)}
                   helperText={touched.lastName && errors.lastName}
-                  sx={{ gridColumn: "span 2" }}
+                  sx={{ gridColumn: "span 4" }}
                 />
                 <TextField
                   label="Location"
@@ -111,7 +111,7 @@ const Form = () => {
                   name="firstName"
                   error={Boolean(touched.location) && Boolean(errors.location)}
                   helperText={touched.location && errors.location}
-                  sx={{ gridColumn: "span 2" }}
+                  sx={{ gridColumn: "span 4" }}
                 />
                 <TextField
                   label="Occupation"
@@ -123,7 +123,7 @@ const Form = () => {
                     Boolean(touched.occupation) && Boolean(errors.occupation)
                   }
                   helperText={touched.occupation && errors.occupation}
-                  sx={{ gridColumn: "span 2" }}
+                  sx={{ gridColumn: "span 4" }}
                 />
                 <Box
                   gridColumn="span 4"
@@ -151,7 +151,7 @@ const Form = () => {
                         ) : (
                           <FlexBetween>
                             <Typography>{values.picture.name}</Typography>
-                            <EditOutlinedIcon />
+                            <ModeEditOutlineOutlinedIcon />
                           </FlexBetween>
                         )}
                       </Box>
@@ -162,44 +162,61 @@ const Form = () => {
             )}
 
             <TextField
-                  label="Email"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.email}
-                  name="firstName"
-                  error={
-                    Boolean(touched.email) && Boolean(errors.email)
-                  }
-                  helperText={touched.email && errors.email}
-                  sx={{ gridColumn: "span 2" }}
-                />
-                <TextField
-                  label="Occupation"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.occupation}
-                  name="firstName"
-                  error={
-                    Boolean(touched.occupation) && Boolean(errors.occupation)
-                  }
-                  helperText={touched.occupation && errors.occupation}
-                  sx={{ gridColumn: "span 2" }}
-                />
-                <TextField
-                  label="Password"
-                  type="password"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.password}
-                  name="firstName"
-                  error={
-                    Boolean(touched.password) && Boolean(errors.password)
-                  }
-                  helperText={touched.password && errors.password}
-                  sx={{ gridColumn: "span 2" }}
-                />
+              label="Email"
+              onBlur={handleBlur}
+              onChange={handleChange}
+              value={values.email}
+              name="firstName"
+              error={Boolean(touched.email) && Boolean(errors.email)}
+              helperText={touched.email && errors.email}
+              sx={{ gridColumn: "span 4" }}
+            />
+            <TextField
+              label="Password"
+              type="password"
+              onBlur={handleBlur}
+              onChange={handleChange}
+              value={values.password}
+              name="firstName"
+              error={Boolean(touched.password) && Boolean(errors.password)}
+              helperText={touched.password && errors.password}
+              sx={{ gridColumn: "span 4" }}
+            />
           </Box>
           {/* BUTTONS */}
+          <Box>
+            <Button
+              fullWidth
+              typeof="submit"
+              sx={{
+                m: "2rem 0",
+                p: "1rem",
+                backgroundColor: palette.primary.main,
+                color: palette.background.alt,
+                "&:hover": { color: palette.primary.main },
+              }}
+            >
+              {isLogin ? "Login" : "Register"}
+            </Button>
+            <Typography
+              onClick={() => {
+                setPageType(isLogin ? "register" : "login");
+                resetForm();
+              }}
+              sx={{
+                textDecoration: "underline",
+                color: palette.primary.main,
+                "&:hover": {
+                  cursor: "pointer",
+                  color: palette.primary.light,
+                },
+              }}
+            >
+              {isLogin
+                ? "Don't have and account? Sign Up here."
+                : "Alredy have an account? Login Here."}
+            </Typography>
+          </Box>
         </form>
       )}
     </Formik>
