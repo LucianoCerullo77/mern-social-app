@@ -160,7 +160,46 @@ const Form = () => {
                 </Box>
               </>
             )}
+
+            <TextField
+                  label="Email"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.email}
+                  name="firstName"
+                  error={
+                    Boolean(touched.email) && Boolean(errors.email)
+                  }
+                  helperText={touched.email && errors.email}
+                  sx={{ gridColumn: "span 2" }}
+                />
+                <TextField
+                  label="Occupation"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.occupation}
+                  name="firstName"
+                  error={
+                    Boolean(touched.occupation) && Boolean(errors.occupation)
+                  }
+                  helperText={touched.occupation && errors.occupation}
+                  sx={{ gridColumn: "span 2" }}
+                />
+                <TextField
+                  label="Password"
+                  type="password"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.password}
+                  name="firstName"
+                  error={
+                    Boolean(touched.password) && Boolean(errors.password)
+                  }
+                  helperText={touched.password && errors.password}
+                  sx={{ gridColumn: "span 2" }}
+                />
           </Box>
+          {/* BUTTONS */}
         </form>
       )}
     </Formik>
