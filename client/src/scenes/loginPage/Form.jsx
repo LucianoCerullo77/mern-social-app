@@ -139,7 +139,7 @@ const Form = () => {
                   onBlur={handleBlur}
                   onChange={handleChange}
                   value={values.lastName}
-                  name="firstName"
+                  name="lastName"
                   error={Boolean(touched.lastName) && Boolean(errors.lastName)}
                   helperText={touched.lastName && errors.lastName}
                   sx={{ gridColumn: "span 4" }}
@@ -149,7 +149,7 @@ const Form = () => {
                   onBlur={handleBlur}
                   onChange={handleChange}
                   value={values.location}
-                  name="firstName"
+                  name="Location"
                   error={Boolean(touched.location) && Boolean(errors.location)}
                   helperText={touched.location && errors.location}
                   sx={{ gridColumn: "span 4" }}
@@ -159,7 +159,7 @@ const Form = () => {
                   onBlur={handleBlur}
                   onChange={handleChange}
                   value={values.occupation}
-                  name="firstName"
+                  name="occupation"
                   error={
                     Boolean(touched.occupation) && Boolean(errors.occupation)
                   }
@@ -207,7 +207,7 @@ const Form = () => {
               onBlur={handleBlur}
               onChange={handleChange}
               value={values.email}
-              name="firstName"
+              name="email"
               error={Boolean(touched.email) && Boolean(errors.email)}
               helperText={touched.email && errors.email}
               sx={{ gridColumn: "span 4" }}
@@ -218,7 +218,7 @@ const Form = () => {
               onBlur={handleBlur}
               onChange={handleChange}
               value={values.password}
-              name="firstName"
+              name="password"
               error={Boolean(touched.password) && Boolean(errors.password)}
               helperText={touched.password && errors.password}
               sx={{ gridColumn: "span 4" }}
