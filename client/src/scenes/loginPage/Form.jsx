@@ -55,7 +55,7 @@ const Form = () => {
 
   const register = async (values, onSubmitProps) => {
     //this allows us to send form info with image
-    const formData = new formData();
+    const formData = new FormData();
     for (let value in values) {
       formData.append(value, values[value]);
     }
