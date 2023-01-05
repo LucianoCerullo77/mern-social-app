@@ -62,8 +62,11 @@ const Form = () => {
     formData.append("picturePath", values.picture.name);
 
     const savedUserResponse = await fetch(
-      "https://localhost:3001/auth/register",
-      { method: "POST", body: formData }
+      "http://localhost:3001/auth/register",
+      {
+        method: "POST",
+        body: formData,
+      }
     );
     const savedUser = await savedUserResponse.json();
     onSubmitProps.resetForm();
@@ -72,12 +75,15 @@ const Form = () => {
       setPageType("login");
     }
   };
+
   const login = async (values, onSubmitProps) => {
-    const loggedInResponse = await fetch("https://localhost:3001/auth/login", {
+    const loggedInResponse = await fetch("http://localhost:3001/auth/login",
+    {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
     });
+
     const loggedIn = await loggedInResponse.json();
     onSubmitProps.resetForm();
     if (loggedIn) {
@@ -237,7 +243,7 @@ const Form = () => {
                 "&:hover": { color: palette.primary.main },
               }}
             >
-              {isLogin ? "Login" : "Register"}
+              {isLogin ? "LOGIN" : "REGISTER"}
             </Button>
             <Typography
               onClick={() => {

@@ -13,7 +13,7 @@ const LoginPage = () => {
         textAlign="center"
       >
         <Typography fontWeight="Bold" fontSize="32px" color="primary">
-          Fennex
+          Socialize
         </Typography>
       </Box>
       <Box
