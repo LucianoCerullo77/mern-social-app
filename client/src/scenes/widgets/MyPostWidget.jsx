@@ -54,11 +54,72 @@ const MyPostWidget = ({ picturePath }) => {
 
     const posts = await response.json();
     dispatch(setPosts({ posts }));
-    setImage(null)
-    setPost("")
+    setImage(null);
+    setPost("");
   };
 
-  return <div>MyPostWidget</div>;
+  return (
+    <WidgetWrapper>
+      <FlexBetween gap="1.5rem">
+        <UserImage image={picturePath} />
+        <InputBase
+          placeholder="What's on your mind..."
+          onChange={(e) => setPost(e.target.value)}
+          value={post}
+          sx={{
+            width: "100%",
+            backgroundColor: palette.neutral.light,
+            borderRadius: "2rem",
+            padding: "1rem 2rem",
+          }}
+        />
+      </FlexBetween>
+      {isImage && (
+        <Box
+          borderRadius="5px"
+          border={`1px solid ${medium}`}
+          mt="1rem"
+          p="1rem"
+        >
+          <Dropzone
+            acceptedFiles=".jpg,.jpeg,.png"
+            multiple={false}
+            onDrop={(acceptedFiles) => setImage(acceptedFiles[0])}
+          >
+            {({ getRootProps, getInputProps }) => (
+              <FlexBetween>
+                <Box
+                  {...getRootProps()}
+                  border={`2px dashed ${palette.primary.main}`}
+                  p="1rem"
+                  width="100%"
+                  sx={{ "&:hover": { cursors: "pointer" } }}
+                >
+                  <input {...getInputProps()} />
+                  {!image ? (
+                    <p>Add Image Here</p>
+                  ) : (
+                    <FlexBetween>
+                      <Typography>{image.name}</Typography>
+                      <ModeEditOutlineOutlined />
+                    </FlexBetween>
+                  )}
+                </Box>
+                {image && (
+                    <IconButton
+                    onClick={() => setImage(null)}
+                    sx={{width : "15%"}}
+                    >
+                    <DeleteOutlined />
+                    </IconButton>
+                )}
+              </FlexBetween>
+            )}
+          </Dropzone>
+        </Box>
+      )}
+    </WidgetWrapper>
+  );
 };
 
 export default MyPostWidget;
