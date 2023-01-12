@@ -47,6 +47,20 @@ const PostWidget = ({
     const updatedPost = await response.json();
     dispatch(setPost({ post: updatedPost }));
   };
+  return (
+    <WidgetWrapper m="2rem 0">
+      <Friend
+        friendId={postUserId}
+        name={name}
+        subtitle={location}
+        userPicturePath={userPicturePath}
+      />
+      <Typography color={main} sx={{ mt: "1rem" }}>
+        {description}
+      </Typography>
+      {picturePath && <img width="100" height="auto" alt="post" />}
+    </WidgetWrapper>
+  );
 };
 
 export default PostWidget;
