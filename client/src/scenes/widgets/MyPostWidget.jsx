@@ -1,11 +1,11 @@
 import {
+  EditOutlined,
   DeleteOutlined,
   AttachFileOutlined,
   GifBoxOutlined,
   ImageOutlined,
   MicOutlined,
   MoreHorizOutlined,
-  ModeEditOutlineOutlined,
 } from "@mui/icons-material";
 import {
   Box,
@@ -33,7 +33,7 @@ const MyPostWidget = ({ picturePath }) => {
   const { palette } = useTheme();
   const { _id } = useSelector((state) => state.user);
   const token = useSelector((state) => state.token);
-  const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
+  const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
   const mediumMain = palette.neutral.mediumMain;
   const medium = palette.neutral.medium;
 
@@ -45,12 +45,12 @@ const MyPostWidget = ({ picturePath }) => {
       formData.append("picture", image);
       formData.append("picturePath", image.name);
     }
+
     const response = await fetch(`http://localhost:3001/posts`, {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
       body: formData,
     });
-
     const posts = await response.json();
     dispatch(setPosts({ posts }));
     setImage(null);
@@ -75,8 +75,8 @@ const MyPostWidget = ({ picturePath }) => {
       </FlexBetween>
       {isImage && (
         <Box
-          borderRadius="5px"
           border={`1px solid ${medium}`}
+          borderRadius="5px"
           mt="1rem"
           p="1rem"
         >
@@ -92,7 +92,7 @@ const MyPostWidget = ({ picturePath }) => {
                   border={`2px dashed ${palette.primary.main}`}
                   p="1rem"
                   width="100%"
-                  sx={{ "&:hover": { cursors: "pointer" } }}
+                  sx={{ "&:hover": { cursor: "pointer" } }}
                 >
                   <input {...getInputProps()} />
                   {!image ? (
@@ -100,7 +100,7 @@ const MyPostWidget = ({ picturePath }) => {
                   ) : (
                     <FlexBetween>
                       <Typography>{image.name}</Typography>
-                      <ModeEditOutlineOutlined />
+                      <EditOutlined />
                     </FlexBetween>
                   )}
                 </Box>
