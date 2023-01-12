@@ -77,6 +77,7 @@ const PostWidget = ({
                 <FavoriteBorderOutlines />
               )}
             </IconButton>
+            <Typography>{likeCount}</Typography>
           </FlexBetween>
         </FlexBetween>
       </FlexBetween>
