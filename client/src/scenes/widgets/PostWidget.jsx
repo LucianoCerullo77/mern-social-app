@@ -69,6 +69,8 @@ const PostWidget = ({
       )}
       <FlexBetween mt="0.25rem">
         <FlexBetween gap="1rem">
+        
+        {/* LIKES */}
           <FlexBetween gap="0.3rem">
             <IconButton onClick={patchLike}>
               {isLiked ? (
@@ -78,6 +80,14 @@ const PostWidget = ({
               )}
             </IconButton>
             <Typography>{likeCount}</Typography>
+          </FlexBetween>
+
+          {/* COMMENTS */}
+          <FlexBetween gap="0.3rem">
+            <IconButton onClick={setIsComments(!isComments)}>
+              <ChatBubbleOutlineOutlined />
+            </IconButton>
+            <Typography>{comments.length}</Typography>
           </FlexBetween>
         </FlexBetween>
       </FlexBetween>
