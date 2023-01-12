@@ -28,7 +28,7 @@ const PostWidget = ({
   const token = useSelector((state) => state.token);
   const loggedInUserId = useSelector((state) => state.user._id);
   const isLiked = Boolean(likes[loggedInUserId]);
-  const likeCount = Object.keys(likes.length);
+  const likeCount = Object.keys(likes).length;
 
   const { palette } = useTheme();
   const main = palette.neutral.main;
@@ -46,6 +46,7 @@ const PostWidget = ({
     const updatedPost = await response.json();
     dispatch(setPost({ post: updatedPost }));
   };
+
   return (
     <WidgetWrapper m="2rem 0">
       <Friend
@@ -59,7 +60,7 @@ const PostWidget = ({
       </Typography>
       {picturePath && (
         <img
-          width="100"
+          width="100%"
           height="auto"
           alt="post"
           style={{ borderRadius: "0.75rem", marginTop: "0.75rem" }}
@@ -68,7 +69,6 @@ const PostWidget = ({
       )}
       <FlexBetween mt="0.25rem">
         <FlexBetween gap="1rem">
-          {/* LIKES */}
           <FlexBetween gap="0.3rem">
             <IconButton onClick={patchLike}>
               {isLiked ? (
@@ -80,9 +80,8 @@ const PostWidget = ({
             <Typography>{likeCount}</Typography>
           </FlexBetween>
 
-          {/* COMMENTS */}
           <FlexBetween gap="0.3rem">
-            <IconButton onClick={setIsComments(!isComments)}>
+            <IconButton onClick={() => setIsComments(!isComments)}>
               <ChatBubbleOutlineOutlined />
             </IconButton>
             <Typography>{comments.length}</Typography>
