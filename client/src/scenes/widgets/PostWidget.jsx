@@ -1,6 +1,6 @@
 import {
   ChatBubbleOutlineOutlined,
-  FavoriteBorderOutlines,
+  FavoriteBorderOutlined,
   FavoriteOutlined,
   ShareOutlined,
 } from "@mui/icons-material";
@@ -15,8 +15,7 @@ import { setPost } from "state";
 const PostWidget = ({
   postId,
   postUserId,
-  firstName,
-  lastName,
+  name,
   description,
   location,
   picturePath,
@@ -69,14 +68,13 @@ const PostWidget = ({
       )}
       <FlexBetween mt="0.25rem">
         <FlexBetween gap="1rem">
-        
-        {/* LIKES */}
+          {/* LIKES */}
           <FlexBetween gap="0.3rem">
             <IconButton onClick={patchLike}>
               {isLiked ? (
                 <FavoriteOutlined sx={{ color: primary }} />
               ) : (
-                <FavoriteBorderOutlines />
+                <FavoriteBorderOutlined />
               )}
             </IconButton>
             <Typography>{likeCount}</Typography>
@@ -90,7 +88,24 @@ const PostWidget = ({
             <Typography>{comments.length}</Typography>
           </FlexBetween>
         </FlexBetween>
+
+        <IconButton>
+          <ShareOutlined />
+        </IconButton>
       </FlexBetween>
+      {isComments && (
+        <Box mt="0.5rem">
+          {comments.map((comment, i) => (
+            <Box key={`${name}-${i}`}>
+              <Divider />
+              <Typography sx={{ color: main, m: "0.5rem 0", pl: "1rem" }}>
+                {comment}
+              </Typography>
+            </Box>
+          ))}
+          <Divider />
+        </Box>
+      )}
     </WidgetWrapper>
   );
 };
