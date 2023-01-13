@@ -1,10 +1,18 @@
-import { Box } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import Friend from "components/Friend";
 import WidgetWrapper from "components/WidgetWrapper";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setFriends } from "state";
+import { useNavigate } from "react-router-dom";
 
-const FriendListWidget = ({ userId }) => {};
+
+const FriendListWidget = ({ userId }) => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const {palette} = useTheme()
+    const token = useSelector((state) => state.token);
+    const friends = useSelector((state) => state.user.friends);
+};
 
 export default FriendListWidget;
