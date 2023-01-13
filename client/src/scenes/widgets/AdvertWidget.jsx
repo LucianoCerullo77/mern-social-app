@@ -23,6 +23,14 @@ const AdvertWidget = () => {
         src="http://localhost:3001/assets/info4.jpeg"
         style={{ borderRadius: "0.75rem", margin: "0.75rem 0" }}
       />
+      <FlexBetween>
+        <Typography color={main}>MIKosMetics</Typography>
+        <Typography color={medium}>MIKosMetics.com</Typography>
+      </FlexBetween>
+      <Typography color={medium} m="0.5rem 0">
+        The best way to get stunning and immaculate beauty and made sure your
+        skin is getting the best exfoliating care.
+      </Typography>
     </WidgetWrapper>
   );
 };
