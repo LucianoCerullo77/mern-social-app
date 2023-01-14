@@ -1,4 +1,4 @@
-import { Box, useTheme } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import Friend from "components/Friend";
 import WidgetWrapper from "components/WidgetWrapper";
 import { useEffect } from "react";
@@ -26,11 +26,21 @@ const FriendListWidget = ({ userId }) => {
   };
 
   useEffect(() => {
-    getFriends()
-  },[])
+    getFriends();
+  }, []);
 
-  return
-  
+  return (
+    <WidgetWrapper>
+      <Typography
+        color={palette.neutral.dark}
+        variant="h5"
+        fontWeight="500"
+        sx={{ mb: "1.5rem" }}
+      >
+        Friend List
+      </Typography>
+    </WidgetWrapper>
+  );
 };
 
 export default FriendListWidget;
