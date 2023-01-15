@@ -4,11 +4,9 @@ import WidgetWrapper from "components/WidgetWrapper";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setFriends } from "state";
-import { useNavigate } from "react-router-dom";
 
 const FriendListWidget = ({ userId }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { palette } = useTheme();
   const token = useSelector((state) => state.token);
   const friends = useSelector((state) => state.user.friends);
@@ -27,7 +25,7 @@ const FriendListWidget = ({ userId }) => {
 
   useEffect(() => {
     getFriends();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <WidgetWrapper>
@@ -40,15 +38,15 @@ const FriendListWidget = ({ userId }) => {
         Friend List
       </Typography>
       <Box display="flex" flexDirection="column" gap="1.5rem">
-      {friends.map((friend) => (
-        <Friend
+        {friends.map((friend) => (
+          <Friend
             key={friend._id}
             friendId={friend._id}
             name={`${friend.firstName} ${friend.lastName}`}
             subtitle={friend.occupation}
-            userPicturePath={friend.PicturePath}
-        />
-      ))}
+            userPicturePath={friend.picturePath}
+          />
+        ))}
       </Box>
     </WidgetWrapper>
   );
